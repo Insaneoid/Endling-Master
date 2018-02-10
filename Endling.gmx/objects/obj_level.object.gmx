@@ -190,10 +190,16 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             if (bottom) {
                 if (!bRight) {
                     tile_add(bgW, tw*2, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
+                    tile_add(bgW, 48, 32, tw, th, tx-16, ty+16, -ty-tw);
                 } else if (!bLeft) {
                     tile_add(bgW, tw*0, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
+                    tile_add(bgW, 48, 32, tw, th, tx+16, ty+16, -ty-tw);
                 } else {
                     tile_add(bgW, tw*1, th*0, tw, th, tx, ty, -ty-tw);
+                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
+                    
                 }
             }                             
         }
