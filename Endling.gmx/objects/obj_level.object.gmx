@@ -182,6 +182,7 @@ for (var yy = 0; yy &lt; height*2; yy++) {
                     tile_add(bgW, tw*2, th*2, tw, th, tx, ty-th, -ty);
                 } else if (!tLeft) {
                     tile_add(bgW, tw*0, th*2, tw, th, tx, ty-th, -ty);
+                    
                 } else {
                     tile_add(bgW, tw*1, th*2, tw, th, tx, ty-th, -ty);
                 }
@@ -190,22 +191,36 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             if (bottom) {
                 if (!bRight) {
                     tile_add(bgW, tw*2, th*0, tw, th, tx, ty, -ty-tw);
-                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
-                    tile_add(bgW, 48, 32, tw, th, tx-16, ty+16, -ty-tw);
                 } else if (!bLeft) {
                     tile_add(bgW, tw*0, th*0, tw, th, tx, ty, -ty-tw);
-                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
-                    tile_add(bgW, 48, 32, tw, th, tx+16, ty+16, -ty-tw);
                 } else {
                     tile_add(bgW, tw*1, th*0, tw, th, tx, ty, -ty-tw);
-                    tile_add(bgW, 48, 32, tw, th, tx, ty+16, -ty-tw);
                     
                 }
             }                             
         }
+
     }
 }        
-
+for(xx = 0; xx &lt; width*2; xx++) {
+    for(yy = 0; yy &lt; height*2; yy++) {
+        var tx = xx*16;
+        var ty = yy*16;
+        
+        if (tile_layer_find(-ty, tx, ty) == -1 &amp;&amp; tile_layer_find(0, tx, ty) == -1) {
+            tile_add(bgW, 48, 32, 16, 16, tx, ty, -ty) 
+        }
+        if (tile_layer_find(-ty, tx+16, ty) == -1 &amp;&amp; tile_layer_find(0, tx+16, ty) == -1) {
+            tile_add(bgW, 48, 32, 16, 16, tx+16, ty, -ty) 
+        }
+        if (tile_layer_find(-ty, tx, ty+16) == -1 &amp;&amp; tile_layer_find(0, tx, ty+16) == -1) {
+            tile_add(bgW, 48, 32, 16, 16, tx, ty+16, -ty) 
+        }
+        if (tile_layer_find(-ty, tx+16, ty+16) == -1 &amp;&amp; tile_layer_find(0, tx+16, ty+16) == -1) {
+            tile_add(bgW, 48, 32, 16, 16, tx+16, ty+16, -ty) 
+        }    
+    }
+}
 // Add blocks
 for(xx = 0; xx &lt; width; xx++) {
     for(yy = 0; yy &lt; height; yy++) {
